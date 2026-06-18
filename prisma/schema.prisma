@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+model Problem {
+  id         String   @id @default(uuid())
+  user_id    String
+  title      String
+  url        String
+  platform   String   // e.g., "leetcode", "codechef", "hackerrank"
+  difficulty String   // e.g., "easy", "medium", "hard"
+  topic      String   // e.g., "array", "tree", "dp"
+  created_at DateTime @default(now())
+  reviews    Review[]
+
+  @@index([user_id])
+}
+
+model Review {
+  id               String   @id @default(uuid())
+  problem_id       String
+  user_id          String
+  confidence       Int      // 1 to 5
+  reviewed_at      DateTime @default(now())
+  next_review_date DateTime
+  interval_days    Int
+  ease_factor      Float
+  problem          Problem  @relation(fields: [problem_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+  @@index([problem_id])
+}
+
+model Streak {
+  id               String   @id @default(uuid())
+  user_id          String   @unique
+  current_streak   Int      @default(0)
+  longest_streak   Int      @default(0)
+  last_active_date DateTime @default(now())
+}
