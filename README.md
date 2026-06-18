@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DSA Problem Tracker
 
-## Getting Started
+A full-stack web application designed to help CS students build long-term retention of Data Structures and Algorithms (DSA) problems using **spaced repetition**. 
 
-First, run the development server:
+Every time you solve a problem on LeetCode, CodeChef, or HackerRank, you log it here and rate your confidence (1-5). An integrated SM-2 spaced repetition engine calculates exactly when you should review that problem again — drilling your weak spots and pushing your mastered problems further out.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Tech Stack
+
+- **Frontend**: Next.js 15 (App Router), TypeScript, Tailwind CSS v4, Recharts, Framer Motion
+- **Backend**: Next.js API Routes, Prisma ORM
+- **Database**: PostgreSQL (hosted on Supabase)
+- **Authentication**: Supabase Auth
+- **Deployment**: Vercel
+
+## 🎯 Features
+
+### Phase 1 (Core)
+- [x] Next.js Boilerplate & Database Schema setup
+- [ ] User authentication via Supabase (Email + Google OAuth)
+- [ ] Problem logging system (capture platform, difficulty, topic, URL)
+- [ ] Daily review queue (problems due today)
+- [ ] Custom SM-2 algorithm to calculate next review dates based on confidence
+
+### Phase 2 (Analytics)
+- [ ] Topic heatmap showing weak areas
+- [ ] Streak counter
+- [ ] Platform breakdown
+- [ ] CSV export
+
+## 🧠 How the SM-2 Algorithm Works
+
+When you rate a problem with a confidence score `q` (1 to 5):
+- **If `q < 3`**: The interval is reset to 1 day. You need to review this again tomorrow.
+- **If `q >= 3`**: A new interval is calculated using the current *ease factor*, and the ease factor is updated based on your rating.
+
+New problems start with an ease factor of 2.5. Problems you rate highly will be pushed further into the future, saving you time. Problems you struggle with will stay in your daily queue until you master them.
+
+## 📂 Local Development
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Duplicate `.env.example` to `.env` and add your Supabase connection strings.
+4. Push the schema to your database: `npx prisma db push`
+5. Run the development server: `npm run dev`
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
