@@ -1,5 +1,6 @@
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
+import Link from 'next/link'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -20,8 +21,15 @@ export default async function DashboardPage() {
           <p className="text-gray-600 dark:text-gray-300">
             Welcome back! You are logged in as <span className="font-semibold">{user.email}</span>.
           </p>
-          <form action="/auth/signout" method="post" className="mt-4">
-            <button className="text-sm text-red-600 hover:text-red-500 font-medium">
+        <div className="mt-8 flex gap-4">
+          <Link
+            href="/problems/new"
+            className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+          >
+            + Log New Problem
+          </Link>
+          <form action="/auth/signout" method="post">
+            <button className="rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
               Sign out
             </button>
           </form>
