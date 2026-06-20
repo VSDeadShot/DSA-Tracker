@@ -2,6 +2,7 @@ import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import prisma from '@/lib/prisma'
+import { getCurrentStreak } from '@/lib/streak'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -13,6 +14,9 @@ export default async function DashboardPage() {
   if (!user) {
     redirect('/login')
   }
+
+  const currentStreak = await getCurrentStreak(user.id)
+
 
   const problems = await prisma.problem.findMany({
     where: { user_id: user.id },
@@ -50,7 +54,16 @@ export default async function DashboardPage() {
         </div>
         
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 mb-8">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+            <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Current Streak</h3>
+            <div className="mt-2 flex items-baseline gap-2">
+              <p className="text-3xl font-bold text-orange-500 dark:text-orange-400">{currentStreak}</p>
+              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">days</p>
+              {currentStreak > 0 && <span className="text-xl">🔥</span>}
+            </div>
+          </div>
+
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
             <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Problems</h3>
             <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">{totalProblems}</p>
