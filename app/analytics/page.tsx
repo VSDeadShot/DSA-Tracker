@@ -59,12 +59,21 @@ export default async function AnalyticsPage() {
       <div className="mx-auto max-w-5xl">
         <div className="mb-8 flex items-center justify-between">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Analytics</h1>
-          <Link
-            href="/dashboard"
-            className="text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400"
-          >
-            &larr; Back to Dashboard
-          </Link>
+          <div className="flex items-center gap-4">
+            <a
+              href="/api/export"
+              download
+              className="rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
+            >
+              Export to CSV
+            </a>
+            <Link
+              href="/dashboard"
+              className="text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400"
+            >
+              &larr; Back to Dashboard
+            </Link>
+          </div>
         </div>
 
         <AnalyticsCharts platformData={platformData} topicData={topicData} />
