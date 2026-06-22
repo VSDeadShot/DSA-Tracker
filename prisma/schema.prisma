@@ -14,6 +14,7 @@ model Problem {
   platform   String   // e.g., "leetcode", "codechef", "hackerrank"
   difficulty String   // e.g., "easy", "medium", "hard"
   topic      String   // e.g., "array", "tree", "dp"
+  notes      String?  @db.Text
   created_at DateTime @default(now())
   reviews    Review[]
 

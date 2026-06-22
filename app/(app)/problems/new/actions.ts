@@ -18,9 +18,10 @@ export async function addProblem(formData: FormData) {
   const platform = formData.get('platform') as string
   const difficulty = formData.get('difficulty') as string
   const topic = formData.get('topic') as string
+  const notes = formData.get('notes') as string | null
 
   if (!title || !url || !platform || !difficulty || !topic) {
-    throw new Error('All fields are required.')
+    throw new Error('All fields except notes are required.')
   }
 
   // Create the problem in the database
@@ -32,6 +33,7 @@ export async function addProblem(formData: FormData) {
       platform,
       difficulty,
       topic,
+      notes,
     },
   })
 
