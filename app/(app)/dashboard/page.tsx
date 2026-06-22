@@ -50,9 +50,9 @@ export default async function DashboardPage() {
           <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-800 transition-all hover:-translate-y-1 hover:border-slate-700">
             <h3 className="text-sm font-medium text-slate-400">Current Streak</h3>
             <div className="mt-2 flex items-baseline gap-2">
-              <p className="text-3xl font-bold text-orange-400">{currentStreak}</p>
+              <p className="text-3xl font-bold text-indigo-400">{currentStreak}</p>
               <p className="text-sm font-medium text-slate-500">days</p>
-              {currentStreak > 0 && <span className="text-xl drop-shadow-[0_0_8px_rgba(251,146,60,0.5)]">🔥</span>}
+              {currentStreak > 0 && <span className="text-xl drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]">🔥</span>}
             </div>
           </div>
 
@@ -66,9 +66,9 @@ export default async function DashboardPage() {
             <p className="mt-2 text-3xl font-bold text-white">{totalReviews}</p>
           </div>
 
-          <div className={`p-6 rounded-2xl shadow-xl border backdrop-blur-md transition-all hover:-translate-y-1 ${dueTodayCount > 0 ? 'bg-indigo-900/20 border-indigo-500/30 hover:border-indigo-500/50' : 'bg-emerald-900/10 border-emerald-500/20 hover:border-emerald-500/40'}`}>
-            <h3 className={`text-sm font-medium ${dueTodayCount > 0 ? 'text-indigo-300' : 'text-emerald-400'}`}>Due for Review</h3>
-            <p className={`mt-2 text-3xl font-bold ${dueTodayCount > 0 ? 'text-indigo-100' : 'text-emerald-100'}`}>
+          <div className={`p-6 rounded-2xl shadow-xl border backdrop-blur-md transition-all hover:-translate-y-1 ${dueTodayCount > 0 ? 'bg-indigo-900/20 border-indigo-500/30 hover:border-indigo-500/50' : 'bg-slate-900/50 border-slate-800 hover:border-slate-700'}`}>
+            <h3 className={`text-sm font-medium ${dueTodayCount > 0 ? 'text-indigo-300' : 'text-slate-400'}`}>Due for Review</h3>
+            <p className={`mt-2 text-3xl font-bold ${dueTodayCount > 0 ? 'text-indigo-100' : 'text-white'}`}>
               {dueTodayCount}
             </p>
             {dueTodayCount > 0 && (
