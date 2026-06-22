@@ -1,6 +1,12 @@
 import { login, signup } from './actions'
 
-export default function LoginPage() {
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: { error?: string }
+}) {
+  const { error } = await searchParams
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
       <div className="w-full max-w-md space-y-8 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
@@ -12,6 +18,12 @@ export default function LoginPage() {
             Sign in to your account or create a new one
           </p>
         </div>
+
+        {error && (
+          <div className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 p-3 rounded-md text-sm text-center border border-red-200 dark:border-red-800">
+            {error}
+          </div>
+        )}
 
         <form className="mt-8 space-y-6">
           <div className="space-y-4 rounded-md shadow-sm">

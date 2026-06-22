@@ -33,21 +33,15 @@ export default async function ReviewQueuePage() {
   })
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8">
+    <div className="p-8">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Daily Review Queue</h1>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">
+            <h1 className="text-3xl font-bold text-white">Daily Review Queue</h1>
+            <p className="mt-2 text-slate-400">
               Problems due for spaced repetition today based on your past performance.
             </p>
           </div>
-          <Link
-            href="/dashboard"
-            className="text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400"
-          >
-            &larr; Back to Dashboard
-          </Link>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">

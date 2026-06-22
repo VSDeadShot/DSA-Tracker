@@ -55,24 +55,18 @@ export default async function AnalyticsPage() {
     .sort((a, b) => a.avgConfidence - b.avgConfidence)
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8">
+    <div className="p-8">
       <div className="mx-auto max-w-5xl">
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Analytics</h1>
+          <h1 className="text-3xl font-bold text-white">Analytics</h1>
           <div className="flex items-center gap-4">
             <a
               href="/api/export"
               download
-              className="rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
+              className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
             >
               Export to CSV
             </a>
-            <Link
-              href="/dashboard"
-              className="text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400"
-            >
-              &larr; Back to Dashboard
-            </Link>
           </div>
         </div>
 
