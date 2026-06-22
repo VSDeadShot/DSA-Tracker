@@ -47,28 +47,28 @@ export default async function DashboardPage() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-10">
-          <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-800 transition-all hover:-translate-y-1 hover:border-slate-700">
-            <h3 className="text-sm font-medium text-slate-400">Current Streak</h3>
+          <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-800 transition-all hover:-translate-y-1 hover:border-indigo-500/50 group">
+            <h3 className="text-sm font-medium text-slate-400 group-hover:text-indigo-300 transition-colors">Current Streak</h3>
             <div className="mt-2 flex items-baseline gap-2">
-              <p className="text-3xl font-bold text-indigo-400">{currentStreak}</p>
+              <p className="text-3xl font-bold text-white">{currentStreak}</p>
               <p className="text-sm font-medium text-slate-500">days</p>
               {currentStreak > 0 && <span className="text-xl drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]">🔥</span>}
             </div>
           </div>
 
-          <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-800 transition-all hover:-translate-y-1 hover:border-slate-700">
-            <h3 className="text-sm font-medium text-slate-400">Total Problems</h3>
+          <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-800 transition-all hover:-translate-y-1 hover:border-indigo-500/50 group">
+            <h3 className="text-sm font-medium text-slate-400 group-hover:text-indigo-300 transition-colors">Total Problems</h3>
             <p className="mt-2 text-3xl font-bold text-white">{totalProblems}</p>
           </div>
           
-          <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-800 transition-all hover:-translate-y-1 hover:border-slate-700">
-            <h3 className="text-sm font-medium text-slate-400">Reviews Completed</h3>
+          <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-800 transition-all hover:-translate-y-1 hover:border-indigo-500/50 group">
+            <h3 className="text-sm font-medium text-slate-400 group-hover:text-indigo-300 transition-colors">Reviews Completed</h3>
             <p className="mt-2 text-3xl font-bold text-white">{totalReviews}</p>
           </div>
 
-          <div className={`p-6 rounded-2xl shadow-xl border backdrop-blur-md transition-all hover:-translate-y-1 ${dueTodayCount > 0 ? 'bg-indigo-900/20 border-indigo-500/30 hover:border-indigo-500/50' : 'bg-slate-900/50 border-slate-800 hover:border-slate-700'}`}>
-            <h3 className={`text-sm font-medium ${dueTodayCount > 0 ? 'text-indigo-300' : 'text-slate-400'}`}>Due for Review</h3>
-            <p className={`mt-2 text-3xl font-bold ${dueTodayCount > 0 ? 'text-indigo-100' : 'text-white'}`}>
+          <div className={`p-6 rounded-2xl shadow-xl border backdrop-blur-md transition-all hover:-translate-y-1 group ${dueTodayCount > 0 ? 'bg-indigo-900/20 border-indigo-500/30 hover:border-indigo-500/50' : 'bg-slate-900/50 border-slate-800 hover:border-indigo-500/50'}`}>
+            <h3 className={`text-sm font-medium transition-colors ${dueTodayCount > 0 ? 'text-indigo-300' : 'text-slate-400 group-hover:text-indigo-300'}`}>Due for Review</h3>
+            <p className="mt-2 text-3xl font-bold text-white">
               {dueTodayCount}
             </p>
             {dueTodayCount > 0 && (
