@@ -1,74 +1,89 @@
 import { login, signup } from './actions'
+import Link from 'next/link'
 
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: { error?: string }
+  searchParams: { error?: string; tab?: string }
 }) {
-  const { error } = await searchParams
+  const { error, tab = 'signin' } = await searchParams
+  const isSignIn = tab === 'signin'
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
-      <div className="w-full max-w-md space-y-8 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+    <div className="flex min-h-screen items-center justify-center bg-slate-950 px-4 selection:bg-indigo-500/30">
+      <div className="w-full max-w-[400px] space-y-6 rounded-2xl bg-slate-900/50 p-8 shadow-xl backdrop-blur-md border border-slate-800">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <Link href="/" className="inline-block text-2xl font-bold tracking-tight text-white mb-2 hover:opacity-80 transition-opacity">
             DSA Tracker
-          </h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            Sign in to your account or create a new one
+          </Link>
+          <p className="text-sm text-slate-400">
+            {isSignIn ? 'Welcome back! Please sign in.' : 'Create your account to get started.'}
           </p>
         </div>
 
+        {/* Tabs */}
+        <div className="flex rounded-lg bg-slate-950 p-1 border border-slate-800">
+          <Link
+            href="/login?tab=signin"
+            className={`flex-1 rounded-md py-2 text-center text-sm font-medium transition-all ${
+              isSignIn ? 'bg-slate-800 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            Sign in
+          </Link>
+          <Link
+            href="/login?tab=signup"
+            className={`flex-1 rounded-md py-2 text-center text-sm font-medium transition-all ${
+              !isSignIn ? 'bg-slate-800 text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            Sign up
+          </Link>
+        </div>
+
         {error && (
-          <div className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 p-3 rounded-md text-sm text-center border border-red-200 dark:border-red-800">
+          <div className="bg-red-500/10 text-red-400 p-3 rounded-lg text-sm text-center border border-red-500/20">
             {error}
           </div>
         )}
 
-        <form className="mt-8 space-y-6">
-          <div className="space-y-4 rounded-md shadow-sm">
-            <div>
-              <label htmlFor="email" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                className="relative block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 dark:bg-gray-700 dark:text-white dark:ring-gray-600"
-                placeholder="Email address"
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                className="relative block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 dark:bg-gray-700 dark:text-white dark:ring-gray-600"
-                placeholder="Password"
-              />
-            </div>
+        <form className="space-y-4">
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-slate-300">
+              Email address
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              className="mt-1 block w-full rounded-lg border border-slate-700 bg-slate-950/50 px-3 py-2 text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm transition-colors"
+              placeholder="you@example.com"
+            />
           </div>
 
-          <div className="flex flex-col space-y-3">
-            <button
-              formAction={login}
-              className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-            >
-              Sign in
-            </button>
-            <button
-              formAction={signup}
-              className="flex w-full justify-center rounded-md bg-gray-200 px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
-            >
-              Sign up
-            </button>
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-slate-300">
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              required
+              className="mt-1 block w-full rounded-lg border border-slate-700 bg-slate-950/50 px-3 py-2 text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm transition-colors"
+              placeholder="••••••••"
+            />
           </div>
+
+          <button
+            formAction={isSignIn ? login : signup}
+            className="w-full flex justify-center rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all hover:-translate-y-0.5"
+          >
+            {isSignIn ? 'Sign in to account' : 'Create account'}
+          </button>
         </form>
       </div>
     </div>
