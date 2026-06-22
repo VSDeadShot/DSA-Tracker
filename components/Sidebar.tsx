@@ -17,14 +17,23 @@ export default function Sidebar({ userEmail }: { userEmail: string | undefined }
 
   return (
     <div className={`flex h-full flex-col bg-slate-900 border-r border-slate-800 transition-all duration-300 ${isCollapsed ? 'w-20' : 'w-64'} py-4`}>
-      <div className={`mb-8 flex items-center ${isCollapsed ? 'justify-center px-0' : 'justify-between px-6'}`}>
-        {!isCollapsed && <h1 className="text-xl font-bold tracking-tight text-white truncate whitespace-nowrap">DSA Tracker</h1>}
+      <div className={`mb-8 flex items-center ${isCollapsed ? 'flex-col justify-center gap-4 px-0' : 'justify-between px-6'}`}>
+        <div className="flex items-center gap-3">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-500/20 text-indigo-400">
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          {!isCollapsed && <h1 className="text-xl font-bold tracking-tight text-white truncate whitespace-nowrap">DSA Tracker</h1>}
+        </div>
         <button 
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
           title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          {isCollapsed ? '❯' : '❮'}
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
         </button>
       </div>
 
