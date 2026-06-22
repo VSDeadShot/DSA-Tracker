@@ -5,7 +5,7 @@ export default function Home() {
     <div className="min-h-screen bg-slate-950 text-slate-50 selection:bg-indigo-500/30">
       <div className="relative isolate px-6 pt-14 lg:px-8">
         {/* Hero Section */}
-        <div className="mx-auto max-w-3xl py-32 sm:py-40">
+        <div className="mx-auto max-w-3xl pt-32 pb-24 sm:pt-40 sm:pb-32 mb-20 border-b border-transparent">
           <div className="text-center">
             <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl bg-gradient-to-br from-white to-slate-400 bg-clip-text text-transparent">
               Master DSA with Spaced Repetition
@@ -16,7 +16,7 @@ export default function Home() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/login"
-                className="rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20 transition-all hover:bg-indigo-500 hover:shadow-indigo-500/30 hover:-translate-y-0.5"
+                className="rounded-full bg-indigo-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-600/20 transition-all hover:bg-indigo-500 hover:shadow-indigo-500/30 hover:-translate-y-0.5"
               >
                 Get started for free &rarr;
               </Link>
