@@ -39,7 +39,7 @@ export default function Sidebar({ userEmail }: { userEmail: string | undefined }
 
       <nav className="flex-1 space-y-2 px-3">
         {navItems.map((item) => {
-          const isActive = pathname === item.href || (item.name === 'Dashboard' && pathname.startsWith('/problems') && item.href !== '/problems/new')
+          const isActive = pathname === item.href || (item.name === 'Dashboard' && pathname.startsWith('/problems') && pathname !== '/problems/new')
 
           return (
             <Link
