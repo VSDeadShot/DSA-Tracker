@@ -22,3 +22,21 @@ export async function deleteProblem(formData: FormData) {
 
   revalidatePath('/dashboard')
 }
+
+export async function updateTopic(problemId: string, topic: string) {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return
+
+  // Verify ownership before updating
+  const problem = await prisma.problem.findUnique({ where: { id: problemId } })
+  if (!problem || problem.user_id !== user.id) return
+
+  await prisma.problem.update({
+    where: { id: problemId },
+    data: { topic }
+  })
+
+  revalidatePath('/dashboard')
+  revalidatePath('/analytics')
+}

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import prisma from '@/lib/prisma'
 import { getCurrentStreak } from '@/lib/streak'
 import { deleteProblem } from './actions'
+import TopicSelect from './TopicSelect'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -117,9 +118,7 @@ export default async function DashboardPage() {
                           </Link>
                         </td>
                         <td className="px-6 py-4">
-                          <span className="inline-flex items-center rounded-full bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-slate-300 border border-slate-700">
-                            {problem.topic}
-                          </span>
+                          <TopicSelect problemId={problem.id} initialTopic={problem.topic} />
                         </td>
                         <td className="px-6 py-4">
                           <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border ${
