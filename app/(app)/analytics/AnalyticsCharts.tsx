@@ -14,7 +14,7 @@ import {
   Legend,
 } from 'recharts'
 
-const COLORS = ['#ffffff', '#e5e5e5', '#cccccc', '#b3b3b3', '#999999', '#808080']
+const COLORS = ['#ffffff', '#888888', '#555555', '#333333', '#aaaaaa', '#cccccc']
 
 export default function AnalyticsCharts({
   platformData,
@@ -32,19 +32,19 @@ export default function AnalyticsCharts({
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         {/* Quick Stats Sidebar */}
         <div className="flex flex-col gap-6 lg:col-span-1">
-          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:border-white/50 group flex-1 flex flex-col justify-center">
+          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:bg-[#222222] group flex-1 flex flex-col justify-center">
             <h3 className="text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Total Problems</h3>
             <p className="mt-2 text-5xl font-bold text-white">{totalProblems}</p>
           </div>
           
-          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:border-white/50 group flex-1 flex flex-col justify-center">
+          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:bg-[#222222] group flex-1 flex flex-col justify-center">
             <h3 className="text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Unique Topics</h3>
             <p className="mt-2 text-5xl font-bold text-white">{totalTopics}</p>
           </div>
         </div>
 
         {/* Platform Distribution Pie Chart */}
-        <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:border-white/50 lg:col-span-2">
+        <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:bg-[#222222] lg:col-span-2">
           <h3 className="text-lg font-semibold text-white mb-6">Problems by Platform</h3>
           {platformData.length === 0 ? (
             <div className="h-[250px] flex items-center justify-center text-[#555555]">No data available</div>
@@ -80,7 +80,7 @@ export default function AnalyticsCharts({
       </div>
 
       {/* Bottom Row: Topic Weakness Bar Chart (Full Width & Taller) */}
-      <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:border-white/50 w-full">
+      <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:bg-[#222222] w-full">
         <div className="mb-6">
           <h3 className="text-lg font-semibold text-white">Topic Confidence</h3>
           <p className="text-sm text-[#a0a0a0]">Average confidence score per topic (1 to 5). Lower means you need more practice.</p>

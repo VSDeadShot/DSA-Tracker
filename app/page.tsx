@@ -35,7 +35,7 @@ export default function Home() {
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
               {/* Step 1 */}
-              <div className="flex flex-col bg-[#1a1a1a] p-8 rounded-2xl border border-[#2a2a2a] backdrop-blur-sm shadow-xl transition-all hover:-translate-y-1 hover:border-white/20">
+              <div className="flex flex-col bg-[#1a1a1a] p-8 rounded-2xl border border-[#2a2a2a] backdrop-blur-sm shadow-xl transition-all hover:-translate-y-1 hover:bg-[#222222]">
                 <dt className="flex items-center gap-x-3 text-xl font-semibold leading-7 text-white">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2a2a2a] text-white border border-[#555555]">
                     1
@@ -50,7 +50,7 @@ export default function Home() {
               </div>
 
               {/* Step 2 */}
-              <div className="flex flex-col bg-[#1a1a1a] p-8 rounded-2xl border border-[#2a2a2a] backdrop-blur-sm shadow-xl transition-all hover:-translate-y-1 hover:border-white/20">
+              <div className="flex flex-col bg-[#1a1a1a] p-8 rounded-2xl border border-[#2a2a2a] backdrop-blur-sm shadow-xl transition-all hover:-translate-y-1 hover:bg-[#222222]">
                 <dt className="flex items-center gap-x-3 text-xl font-semibold leading-7 text-white">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2a2a2a] text-white border border-[#555555]">
                     2
@@ -65,7 +65,7 @@ export default function Home() {
               </div>
 
               {/* Step 3 */}
-              <div className="flex flex-col bg-[#1a1a1a] p-8 rounded-2xl border border-[#2a2a2a] backdrop-blur-sm shadow-xl transition-all hover:-translate-y-1 hover:border-white/20">
+              <div className="flex flex-col bg-[#1a1a1a] p-8 rounded-2xl border border-[#2a2a2a] backdrop-blur-sm shadow-xl transition-all hover:-translate-y-1 hover:bg-[#222222]">
                 <dt className="flex items-center gap-x-3 text-xl font-semibold leading-7 text-white">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2a2a2a] text-white border border-[#555555]">
                     3

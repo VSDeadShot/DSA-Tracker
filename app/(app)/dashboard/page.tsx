@@ -49,7 +49,7 @@ export default async function DashboardPage() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-10">
-          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:border-white/50 group">
+          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:bg-[#222222] group">
             <h3 className="text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Current Streak</h3>
             <div className="mt-2 flex items-baseline gap-2">
               <p className="text-3xl font-bold text-white">{currentStreak}</p>
@@ -57,17 +57,17 @@ export default async function DashboardPage() {
             </div>
           </div>
 
-          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:border-white/50 group">
+          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:bg-[#222222] group">
             <h3 className="text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Total Problems</h3>
             <p className="mt-2 text-3xl font-bold text-white">{totalProblems}</p>
           </div>
           
-          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:border-white/50 group">
+          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:bg-[#222222] group">
             <h3 className="text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Reviews Completed</h3>
             <p className="mt-2 text-3xl font-bold text-white">{totalReviews}</p>
           </div>
 
-          <div className={`p-6 rounded-2xl shadow-xl border transition-all hover:-translate-y-1 group ${dueTodayCount > 0 ? 'bg-[#1a1a1a] border-white hover:border-white/80' : 'bg-[#1a1a1a] border-[#2a2a2a] hover:border-white/50'}`}>
+          <div className={`p-6 rounded-2xl shadow-xl border transition-all hover:-translate-y-1 group ${dueTodayCount > 0 ? 'bg-[#1a1a1a] border-white hover:bg-[#222222]' : 'bg-[#1a1a1a] border-[#2a2a2a] hover:bg-[#222222]'}`}>
             <h3 className={`text-sm font-medium transition-colors ${dueTodayCount > 0 ? 'text-white' : 'text-[#a0a0a0] group-hover:text-white'}`}>Due for Review</h3>
             <p className="mt-2 text-3xl font-bold text-white">
               {dueTodayCount}

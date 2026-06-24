@@ -46,10 +46,10 @@ export default function Sidebar({ userEmail }: { userEmail: string | undefined }
               key={item.name}
               href={item.href}
               title={isCollapsed ? item.name : undefined}
-              className={`flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium transition-colors ${
+              className={`flex items-center gap-3 px-3 py-3 text-sm font-medium transition-colors ${
                 isActive
-                  ? 'bg-white text-black shadow-md'
-                  : 'text-[#a0a0a0] hover:bg-[#1a1a1a] hover:text-white'
+                  ? 'bg-[#1f1f1f] text-white border-l-2 border-white'
+                  : 'text-[#a0a0a0] hover:bg-[#1a1a1a] hover:text-white border-l-2 border-transparent'
               } ${isCollapsed ? 'justify-center' : ''}`}
             >
               <span className="text-lg">{item.icon}</span>
