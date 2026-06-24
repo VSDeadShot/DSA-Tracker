@@ -34,88 +34,95 @@ export default async function ProblemPage({ params }: { params: { id: string } }
   const latestReview = problem.reviews[0]
   
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8">
-      <div className="mx-auto max-w-3xl">
-        <div className="mb-6 flex items-center justify-between">
-          <Link
-            href="/dashboard"
-            className="text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400"
+    <div className="p-8 max-w-4xl mx-auto">
+      <div className="mb-6 flex items-center justify-between">
+        <Link
+          href="/dashboard"
+          className="text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
+        >
+          &larr; Back to Dashboard
+        </Link>
+      </div>
+
+      <div className="bg-slate-900/50 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-slate-800">
+        <div className="flex items-start justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-white">
+              {problem.title}
+            </h1>
+            <div className="mt-3 flex gap-2">
+              <span className="inline-flex items-center rounded-md bg-slate-800 px-2.5 py-1 text-xs font-medium text-slate-300 border border-slate-700">
+                {problem.platform}
+              </span>
+              <span className="inline-flex items-center rounded-md bg-indigo-500/10 px-2.5 py-1 text-xs font-medium text-indigo-400 border border-indigo-500/20">
+                {problem.topic}
+              </span>
+              <span className={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-medium border ${
+                problem.difficulty.toLowerCase() === 'easy' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' :
+                problem.difficulty.toLowerCase() === 'medium' ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' :
+                'bg-rose-500/10 text-rose-400 border-rose-500/20'
+              }`}>
+                {problem.difficulty}
+              </span>
+            </div>
+          </div>
+          <a
+            href={problem.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 transition-all hover:-translate-y-0.5"
           >
-            &larr; Back to Dashboard
-          </Link>
+            Solve Problem ↗
+          </a>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
-          <div className="flex items-start justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-                {problem.title}
-              </h1>
-              <div className="mt-2 flex gap-2">
-                <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10 dark:bg-blue-900/30 dark:text-blue-400">
-                  {problem.platform}
-                </span>
-                <span className="inline-flex items-center rounded-md bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10 dark:bg-purple-900/30 dark:text-purple-400">
-                  {problem.topic}
-                </span>
-                <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${
-                  problem.difficulty === 'easy' ? 'bg-green-50 text-green-700 ring-green-600/20 dark:bg-green-900/30 dark:text-green-400' :
-                  problem.difficulty === 'medium' ? 'bg-yellow-50 text-yellow-800 ring-yellow-600/20 dark:bg-yellow-900/30 dark:text-yellow-400' :
-                  'bg-red-50 text-red-700 ring-red-600/10 dark:bg-red-900/30 dark:text-red-400'
-                }`}>
-                  {problem.difficulty}
-                </span>
-              </div>
-            </div>
-            <a
-              href={problem.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
-            >
-              Solve Problem &nearr;
-            </a>
-          </div>
-
-          {/* SM-2 Review Section */}
-          <div className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Review this problem</h2>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              How confident are you with this problem right now? (1 = Completely forgot, 5 = Perfectly easy)
-            </p>
-            
-            <div className="mt-6">
-              <ReviewButtons problemId={problem.id} />
+        {problem.notes && (
+          <div className="mt-8">
+            <h3 className="text-sm font-semibold text-slate-300 mb-2">Notes & Approach</h3>
+            <div className="rounded-lg bg-slate-950/50 border border-slate-800 p-4">
+              <p className="text-slate-400 whitespace-pre-wrap text-sm">{problem.notes}</p>
             </div>
           </div>
+        )}
 
-          {/* Review History */}
-          <div className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Review History</h3>
-            {problem.reviews.length === 0 ? (
-              <p className="text-sm text-gray-500 dark:text-gray-400">No reviews yet. Rate your confidence above to start spacing!</p>
-            ) : (
-              <div className="space-y-4">
-                <div className="rounded-md bg-blue-50 dark:bg-blue-900/20 p-4">
-                  <p className="text-sm text-blue-700 dark:text-blue-400">
-                    <strong>Next review scheduled for:</strong> {latestReview.next_review_date.toLocaleDateString()}
-                  </p>
-                </div>
-                <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-                  {problem.reviews.map((review) => (
-                    <li key={review.id} className="py-3 flex justify-between">
-                      <span className="text-sm text-gray-600 dark:text-gray-300">
-                        {review.reviewed_at.toLocaleDateString()} at {review.reviewed_at.toLocaleTimeString()}
-                      </span>
-                      <span className="text-sm font-medium text-gray-900 dark:text-white">
-                        Confidence: {review.confidence} / 5
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+        {/* SM-2 Review Section */}
+        <div className="mt-10 border-t border-slate-800 pt-8">
+          <h2 className="text-xl font-semibold text-white">Review this problem</h2>
+          <p className="mt-1 text-sm text-slate-400">
+            How confident are you with this problem right now? (1 = Completely forgot, 5 = Perfectly easy)
+          </p>
+          
+          <div className="mt-6">
+            <ReviewButtons problemId={problem.id} />
           </div>
+        </div>
+
+        {/* Review History */}
+        <div className="mt-10 border-t border-slate-800 pt-8">
+          <h3 className="text-lg font-medium text-white mb-4">Review History</h3>
+          {problem.reviews.length === 0 ? (
+            <p className="text-sm text-slate-500">No reviews yet. Rate your confidence above to start spacing!</p>
+          ) : (
+            <div className="space-y-4">
+              <div className="rounded-lg bg-indigo-500/10 border border-indigo-500/20 p-4">
+                <p className="text-sm text-indigo-300">
+                  <strong className="text-indigo-400">Next review scheduled for:</strong> {latestReview.next_review_date.toLocaleDateString()}
+                </p>
+              </div>
+              <ul className="divide-y divide-slate-800/50">
+                {problem.reviews.map((review) => (
+                  <li key={review.id} className="py-3 flex justify-between items-center">
+                    <span className="text-sm text-slate-400">
+                      {review.reviewed_at.toLocaleDateString()} at {review.reviewed_at.toLocaleTimeString()}
+                    </span>
+                    <span className="inline-flex items-center rounded-full bg-slate-800 px-2.5 py-1 text-xs font-medium text-white border border-slate-700">
+                      Confidence: {review.confidence} / 5
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
