@@ -49,32 +49,31 @@ export default async function DashboardPage() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-10">
-          <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-800 transition-all hover:-translate-y-1 hover:border-indigo-500/50 group">
-            <h3 className="text-sm font-medium text-slate-400 group-hover:text-indigo-300 transition-colors">Current Streak</h3>
+          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:border-white/50 group">
+            <h3 className="text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Current Streak</h3>
             <div className="mt-2 flex items-baseline gap-2">
               <p className="text-3xl font-bold text-white">{currentStreak}</p>
-              <p className="text-sm font-medium text-slate-500">days</p>
-              {currentStreak > 0 && <span className="text-xl drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]">🔥</span>}
+              <p className="text-sm font-medium text-[#555555]">days</p>
             </div>
           </div>
 
-          <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-800 transition-all hover:-translate-y-1 hover:border-indigo-500/50 group">
-            <h3 className="text-sm font-medium text-slate-400 group-hover:text-indigo-300 transition-colors">Total Problems</h3>
+          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:border-white/50 group">
+            <h3 className="text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Total Problems</h3>
             <p className="mt-2 text-3xl font-bold text-white">{totalProblems}</p>
           </div>
           
-          <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-slate-800 transition-all hover:-translate-y-1 hover:border-indigo-500/50 group">
-            <h3 className="text-sm font-medium text-slate-400 group-hover:text-indigo-300 transition-colors">Reviews Completed</h3>
+          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:border-white/50 group">
+            <h3 className="text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Reviews Completed</h3>
             <p className="mt-2 text-3xl font-bold text-white">{totalReviews}</p>
           </div>
 
-          <div className={`p-6 rounded-2xl shadow-xl border backdrop-blur-md transition-all hover:-translate-y-1 group ${dueTodayCount > 0 ? 'bg-indigo-900/20 border-indigo-500/30 hover:border-indigo-500/50' : 'bg-slate-900/50 border-slate-800 hover:border-indigo-500/50'}`}>
-            <h3 className={`text-sm font-medium transition-colors ${dueTodayCount > 0 ? 'text-indigo-300' : 'text-slate-400 group-hover:text-indigo-300'}`}>Due for Review</h3>
+          <div className={`p-6 rounded-2xl shadow-xl border transition-all hover:-translate-y-1 group ${dueTodayCount > 0 ? 'bg-[#1a1a1a] border-white hover:border-white/80' : 'bg-[#1a1a1a] border-[#2a2a2a] hover:border-white/50'}`}>
+            <h3 className={`text-sm font-medium transition-colors ${dueTodayCount > 0 ? 'text-white' : 'text-[#a0a0a0] group-hover:text-white'}`}>Due for Review</h3>
             <p className="mt-2 text-3xl font-bold text-white">
               {dueTodayCount}
             </p>
             {dueTodayCount > 0 && (
-              <Link href="/review" className="mt-4 inline-block text-sm font-semibold text-indigo-400 hover:text-indigo-300">
+              <Link href="/review" className="mt-4 inline-block text-sm font-semibold text-white underline hover:text-[#a0a0a0]">
                 Start Session &rarr;
               </Link>
             )}
@@ -85,18 +84,18 @@ export default async function DashboardPage() {
           <h2 className="text-xl font-bold text-white">Recent Problems</h2>
         </div>
 
-        <div className="bg-slate-900/50 backdrop-blur-md rounded-2xl shadow-xl border border-slate-800 overflow-hidden">
+        <div className="bg-[#1a1a1a] rounded-2xl shadow-xl border border-[#2a2a2a] overflow-hidden">
           {problems.length === 0 ? (
-            <div className="p-12 text-center text-slate-400">
+            <div className="p-12 text-center text-[#a0a0a0]">
               <p className="text-lg mb-4">No problems logged yet. Time to start grinding!</p>
-              <Link href="/problems/new" className="inline-flex rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500 transition-colors">
+              <Link href="/problems/new" className="inline-flex rounded-full bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-gray-200 transition-colors">
                 + Log your first problem
               </Link>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="min-w-full text-left text-sm whitespace-nowrap">
-                <thead className="bg-slate-900/80 uppercase tracking-wider text-slate-400 text-xs border-b border-slate-800">
+                <thead className="bg-[#111111] uppercase tracking-wider text-[#a0a0a0] text-xs border-b border-[#2a2a2a]">
                   <tr>
                     <th scope="col" className="px-6 py-4 font-medium">Problem</th>
                     <th scope="col" className="px-6 py-4 font-medium">Topic</th>
@@ -104,27 +103,27 @@ export default async function DashboardPage() {
                     <th scope="col" className="px-6 py-4 font-medium text-right">Status / Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/50">
+                <tbody className="divide-y divide-[#2a2a2a]">
                   {problems.map((problem) => {
                     const nextReview = problem.reviews[0]?.next_review_date
                     const isDue = nextReview ? new Date(nextReview) <= now : true
                     
                     return (
-                      <tr key={problem.id} className="hover:bg-slate-800/30 transition-colors group">
+                      <tr key={problem.id} className="hover:bg-[#111111] transition-colors group">
                         <td className="px-6 py-4">
                           <Link href={`/problems/${problem.id}`} className="block">
-                            <span className="font-medium text-indigo-400 group-hover:text-indigo-300 transition-colors">{problem.title}</span>
-                            <span className="block text-xs text-slate-500 mt-0.5">{problem.platform}</span>
+                            <span className="font-medium text-white group-hover:underline transition-colors">{problem.title}</span>
+                            <span className="block text-xs text-[#a0a0a0] mt-0.5">{problem.platform}</span>
                           </Link>
                         </td>
                         <td className="px-6 py-4">
                           <TopicSelect problemId={problem.id} initialTopic={problem.topic} />
                         </td>
                         <td className="px-6 py-4">
-                          <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border ${
-                            problem.difficulty.toLowerCase() === 'easy' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' :
-                            problem.difficulty.toLowerCase() === 'medium' ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' :
-                            'bg-rose-500/10 text-rose-400 border-rose-500/20'
+                          <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border bg-[#2a2a2a] text-white ${
+                            problem.difficulty.toLowerCase() === 'easy' ? 'border-[#555555]' :
+                            problem.difficulty.toLowerCase() === 'medium' ? 'border-[#a0a0a0]' :
+                            'border-white'
                           }`}>
                             {problem.difficulty}
                           </span>
@@ -132,19 +131,19 @@ export default async function DashboardPage() {
                         <td className="px-6 py-4 text-right">
                           <div className="flex justify-end items-center gap-4">
                             {isDue ? (
-                              <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-500/10 px-2.5 py-0.5 text-xs font-medium text-rose-400 border border-rose-500/20">
-                                <span className="h-1.5 w-1.5 rounded-full bg-rose-400"></span>
+                              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#111111] px-2.5 py-0.5 text-xs font-medium text-white border border-white">
+                                <span className="h-1.5 w-1.5 rounded-full bg-white"></span>
                                 Due today
                               </span>
                             ) : (
-                              <span className="text-slate-400 text-xs">
+                              <span className="text-[#a0a0a0] text-xs">
                                 {nextReview?.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
                               </span>
                             )}
                             
                             <form action={deleteProblem}>
                               <input type="hidden" name="id" value={problem.id} />
-                              <button type="submit" className="text-slate-500 hover:text-rose-400 transition-colors" title="Delete problem">
+                              <button type="submit" className="text-[#555555] hover:text-white transition-colors" title="Delete problem">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                 </svg>

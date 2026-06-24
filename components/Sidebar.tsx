@@ -16,10 +16,10 @@ export default function Sidebar({ userEmail }: { userEmail: string | undefined }
   ]
 
   return (
-    <div className={`flex h-full flex-col bg-slate-900 border-r border-slate-800 transition-all duration-300 ${isCollapsed ? 'w-20' : 'w-64'} py-4`}>
+    <div className={`flex h-full flex-col bg-[#111111] border-r border-[#2a2a2a] transition-all duration-300 ${isCollapsed ? 'w-20' : 'w-64'} py-4`}>
       <div className={`mb-8 flex items-center ${isCollapsed ? 'flex-col justify-center gap-4 px-0' : 'justify-between px-6'}`}>
         <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-500/20 text-indigo-400">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#1a1a1a] text-white">
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
@@ -28,7 +28,7 @@ export default function Sidebar({ userEmail }: { userEmail: string | undefined }
         </div>
         <button 
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-1.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+          className="p-1.5 rounded-lg text-[#a0a0a0] hover:bg-[#1a1a1a] hover:text-white transition-colors"
           title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,8 +48,8 @@ export default function Sidebar({ userEmail }: { userEmail: string | undefined }
               title={isCollapsed ? item.name : undefined}
               className={`flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium transition-colors ${
                 isActive
-                  ? 'bg-indigo-600 text-white shadow-md'
-                  : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+                  ? 'bg-white text-black shadow-md'
+                  : 'text-[#a0a0a0] hover:bg-[#1a1a1a] hover:text-white'
               } ${isCollapsed ? 'justify-center' : ''}`}
             >
               <span className="text-lg">{item.icon}</span>
@@ -59,16 +59,16 @@ export default function Sidebar({ userEmail }: { userEmail: string | undefined }
         })}
       </nav>
 
-      <div className="mt-auto border-t border-slate-800 pt-4 px-3">
+      <div className="mt-auto border-t border-[#2a2a2a] pt-4 px-3">
         {!isCollapsed && (
           <div className="px-3 py-2 mb-2">
-            <p className="truncate text-xs font-medium text-slate-400 whitespace-nowrap">{userEmail}</p>
+            <p className="truncate text-xs font-medium text-[#a0a0a0] whitespace-nowrap">{userEmail}</p>
           </div>
         )}
         <form action="/auth/signout" method="post">
           <button 
             title={isCollapsed ? "Sign out" : undefined}
-            className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-400 transition-colors hover:bg-rose-500/10 hover:text-rose-400 ${isCollapsed ? 'justify-center' : ''}`}
+            className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-[#a0a0a0] transition-colors hover:bg-[#1a1a1a] hover:text-white ${isCollapsed ? 'justify-center' : ''}`}
           >
             <span className="text-lg">🚪</span>
             {!isCollapsed && <span className="whitespace-nowrap">Sign out</span>}
