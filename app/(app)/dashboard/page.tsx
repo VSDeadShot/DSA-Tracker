@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import prisma from '@/lib/prisma'
 import { getCurrentStreak } from '@/lib/streak'
+import { deleteProblem } from './actions'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -99,7 +100,7 @@ export default async function DashboardPage() {
                     <th scope="col" className="px-6 py-4 font-medium">Problem</th>
                     <th scope="col" className="px-6 py-4 font-medium">Topic</th>
                     <th scope="col" className="px-6 py-4 font-medium">Difficulty</th>
-                    <th scope="col" className="px-6 py-4 font-medium text-right">Status / Next Review</th>
+                    <th scope="col" className="px-6 py-4 font-medium text-right">Status / Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-800/50">
@@ -130,16 +131,27 @@ export default async function DashboardPage() {
                           </span>
                         </td>
                         <td className="px-6 py-4 text-right">
-                          {isDue ? (
-                            <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-500/10 px-2.5 py-0.5 text-xs font-medium text-rose-400 border border-rose-500/20">
-                              <span className="h-1.5 w-1.5 rounded-full bg-rose-400"></span>
-                              Due today
-                            </span>
-                          ) : (
-                            <span className="text-slate-400 text-xs">
-                              {nextReview?.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
-                            </span>
-                          )}
+                          <div className="flex justify-end items-center gap-4">
+                            {isDue ? (
+                              <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-500/10 px-2.5 py-0.5 text-xs font-medium text-rose-400 border border-rose-500/20">
+                                <span className="h-1.5 w-1.5 rounded-full bg-rose-400"></span>
+                                Due today
+                              </span>
+                            ) : (
+                              <span className="text-slate-400 text-xs">
+                                {nextReview?.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
+                              </span>
+                            )}
+                            
+                            <form action={deleteProblem}>
+                              <input type="hidden" name="id" value={problem.id} />
+                              <button type="submit" className="text-slate-500 hover:text-rose-400 transition-colors" title="Delete problem">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                              </button>
+                            </form>
+                          </div>
                         </td>
                       </tr>
                     )
