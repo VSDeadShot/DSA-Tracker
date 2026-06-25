@@ -6,26 +6,25 @@ Every time you solve a problem on LeetCode, CodeChef, or HackerRank, you log it 
 
 ## 🚀 Tech Stack
 
-- **Frontend**: Next.js 15 (App Router), TypeScript, Tailwind CSS v4, Recharts, Framer Motion
-- **Backend**: Next.js API Routes, Prisma ORM
+- **Frontend**: Next.js 15 (App Router), TypeScript, Tailwind CSS, Recharts
+- **Backend**: Next.js Server Actions & API Routes, Prisma ORM
 - **Database**: PostgreSQL (hosted on Supabase)
 - **Authentication**: Supabase Auth
-- **Deployment**: Vercel
 
 ## 🎯 Features
 
 ### Phase 1 (Core)
 - [x] Next.js Boilerplate & Database Schema setup
-- [ ] User authentication via Supabase (Email + Google OAuth)
-- [ ] Problem logging system (capture platform, difficulty, topic, URL)
-- [ ] Daily review queue (problems due today)
-- [ ] Custom SM-2 algorithm to calculate next review dates based on confidence
+- [x] User authentication via Supabase
+- [x] Problem logging system (capture platform, difficulty, topic, URL, and notes)
+- [x] Daily review queue (problems due today)
+- [x] Custom SM-2 algorithm to calculate next review dates based on confidence
 
 ### Phase 2 (Analytics)
-- [ ] Topic heatmap showing weak areas
-- [ ] Streak counter
-- [ ] Platform breakdown
-- [ ] CSV export
+- [x] Topic confidence chart showing weak areas
+- [x] Streak counter
+- [x] Platform breakdown
+- [x] CSV export
 
 ## 🧠 How the SM-2 Algorithm Works
 
@@ -35,11 +34,19 @@ When you rate a problem with a confidence score `q` (1 to 5):
 
 New problems start with an ease factor of 2.5. Problems you rate highly will be pushed further into the future, saving you time. Problems you struggle with will stay in your daily queue until you master them.
 
+## 🎨 UI/UX Design
+
+The application features a strict, premium monochrome color palette designed for high contrast and developer focus:
+- Deep black backgrounds (`#0a0a0a`)
+- Distinct layering with slightly lighter panels (`#1a1a1a`)
+- Clean white typography and interactive elements
+- Absence of distracting generic colors
+
 ## 📂 Local Development
 
 1. Clone the repository
 2. Install dependencies: `npm install`
-3. Duplicate `.env.example` to `.env` and add your Supabase connection strings.
+3. Duplicate `.env.example` to `.env` and add your Supabase and Postgres connection strings.
 4. Push the schema to your database: `npx prisma db push`
 5. Run the development server: `npm run dev`
 
