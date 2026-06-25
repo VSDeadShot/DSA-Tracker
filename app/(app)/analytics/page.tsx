@@ -63,7 +63,7 @@ export default async function AnalyticsPage() {
             <a
               href="/api/export"
               download
-              className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
+              className="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 transition-colors"
             >
               Export to CSV
             </a>
