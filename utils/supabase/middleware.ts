@@ -37,13 +37,14 @@ export async function updateSession(request: NextRequest) {
 
   const isAuthRoute = request.nextUrl.pathname.startsWith('/login') || 
                       request.nextUrl.pathname.startsWith('/signup') ||
-                      request.nextUrl.pathname.startsWith('/forgot-password') ||
-                      request.nextUrl.pathname.startsWith('/update-password') ||
-                      request.nextUrl.pathname.startsWith('/auth/callback')
+                      request.nextUrl.pathname.startsWith('/forgot-password')
+
+  const isCallbackRoute = request.nextUrl.pathname.startsWith('/auth/callback')
 
   if (
     !user &&
     !isAuthRoute &&
+    !isCallbackRoute &&
     request.nextUrl.pathname !== '/' // allow landing page if any
   ) {
     // no user, potentially respond by redirecting the user to the login page
