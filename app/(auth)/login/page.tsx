@@ -64,9 +64,16 @@ export default async function LoginPage({
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-[#a0a0a0]">
-              Password
-            </label>
+            <div className="flex items-center justify-between">
+              <label htmlFor="password" className="block text-sm font-medium text-[#a0a0a0]">
+                Password
+              </label>
+              {isSignIn && (
+                <Link href="/forgot-password" className="text-sm font-medium text-[#a0a0a0] hover:text-white transition-colors">
+                  Forgot password?
+                </Link>
+              )}
+            </div>
             <input
               id="password"
               name="password"
