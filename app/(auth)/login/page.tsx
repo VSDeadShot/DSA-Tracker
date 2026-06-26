@@ -42,7 +42,7 @@ export default async function LoginPage({
         </div>
 
         {error && (
-          <div className="bg-red-500/10 text-red-400 p-3 rounded-lg text-sm text-center border border-red-500/20">
+          <div className="bg-red-500/10 text-red-400 p-3 rounded-lg text-sm text-center border border-red-500/20 break-all">
             {error}
           </div>
         )}
