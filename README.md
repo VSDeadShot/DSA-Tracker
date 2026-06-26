@@ -1,5 +1,9 @@
 # DSA Problem Tracker
 
+**Live Application:** [https://trackingdsa.vercel.app](https://trackingdsa.vercel.app)
+
+![DSA Tracker Landing Page](/screenshot.png)
+
 A full-stack web application designed to help CS students build long-term retention of Data Structures and Algorithms (DSA) problems using **spaced repetition**. 
 
 Every time you solve a problem on LeetCode, CodeChef, or HackerRank, you log it here and rate your confidence (1-5). An integrated SM-2 spaced repetition engine calculates exactly when you should review that problem again — drilling your weak spots and pushing your mastered problems further out.
@@ -14,17 +18,17 @@ Every time you solve a problem on LeetCode, CodeChef, or HackerRank, you log it 
 ## 🎯 Features
 
 ### Phase 1 (Core)
-- [x] Next.js Boilerplate & Database Schema setup
-- [x] User authentication via Supabase
-- [x] Problem logging system (capture platform, difficulty, topic, URL, and notes)
-- [x] Daily review queue (problems due today)
-- [x] Custom SM-2 algorithm to calculate next review dates based on confidence
+- Next.js Boilerplate & Database Schema setup
+- User authentication via Supabase (including Password Reset)
+- Problem logging system (capture platform, difficulty, topic, URL, and notes)
+- Daily review queue (problems due today)
+- Custom SM-2 algorithm to calculate next review dates based on confidence
 
 ### Phase 2 (Analytics)
-- [x] Topic confidence chart showing weak areas
-- [x] Streak counter
-- [x] Platform breakdown
-- [x] CSV export
+- Topic confidence chart showing weak areas
+- Streak counter
+- Platform breakdown
+- CSV export
 
 ## 🧠 How the SM-2 Algorithm Works
 
