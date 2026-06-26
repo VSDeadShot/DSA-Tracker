@@ -2,7 +2,7 @@
 
 **Live Application:** [https://trackingdsa.vercel.app](https://trackingdsa.vercel.app)
 
-![DSA Tracker Landing Page](/screenshot.png)
+![DSA Tracker Landing Page](./public/screenshot.png)
 
 A full-stack web application designed to help CS students build long-term retention of Data Structures and Algorithms (DSA) problems using **spaced repetition**. 
 
