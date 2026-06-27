@@ -17,18 +17,14 @@ Every time you solve a problem on LeetCode, CodeChef, or HackerRank, you log it 
 
 ## 🎯 Features
 
-### Phase 1 (Core)
-- Next.js Boilerplate & Database Schema setup
-- User authentication via Supabase (including Password Reset)
-- Problem logging system (capture platform, difficulty, topic, URL, and notes)
-- Daily review queue (problems due today)
-- Custom SM-2 algorithm to calculate next review dates based on confidence
-
-### Phase 2 (Analytics)
-- Topic confidence chart showing weak areas
-- Streak counter
-- Platform breakdown
-- CSV export
+- **Spaced Repetition Engine:** Custom SM-2 algorithm calculates next review dates based on your confidence score (1-5).
+- **Daily Review Queue:** Automatically surfaces problems due for review today.
+- **Problem Logging:** Capture platform, difficulty, topic, URL, and personal notes.
+- **Advanced Analytics:** Visualize topic confidence, platform breakdowns, and review stats with interactive charts.
+- **Streak Tracking:** Stay motivated by tracking your daily logging streaks.
+- **Secure Authentication:** Full user auth system powered by Supabase (Login, Signup, Password Resets).
+- **Fully Responsive:** Sleek mobile-first design with dynamic sidebars and list views for reviewing problems on the go.
+- **Data Portability:** Export your entire tracking history to CSV at any time.
 
 ## 🧠 How the SM-2 Algorithm Works
 
