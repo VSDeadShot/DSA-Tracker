@@ -94,7 +94,62 @@ export default async function DashboardPage() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="min-w-full text-left text-sm whitespace-nowrap">
+              {/* Mobile List View */}
+              <div className="md:hidden divide-y divide-[#2a2a2a]">
+                {problems.map((problem) => {
+                  const nextReview = problem.reviews[0]?.next_review_date
+                  const isDue = nextReview ? new Date(nextReview) <= now : true
+
+                  return (
+                    <div key={problem.id} className="p-4 flex flex-col gap-3">
+                      <div className="flex justify-between items-start gap-4">
+                        <Link href={`/problems/${problem.id}`} className="block overflow-hidden">
+                          <span className="font-medium text-white underline-offset-2 hover:underline truncate block">{problem.title}</span>
+                          <span className="block text-xs text-[#a0a0a0] mt-0.5">{problem.platform}</span>
+                        </Link>
+                        <div className="flex items-center gap-3 shrink-0 mt-0.5">
+                          <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border bg-[#2a2a2a] text-white ${
+                            problem.difficulty.toLowerCase() === 'easy' ? 'border-[#555555]' :
+                            problem.difficulty.toLowerCase() === 'medium' ? 'border-[#a0a0a0]' :
+                            'border-white'
+                          }`}>
+                            {problem.difficulty}
+                          </span>
+                          <form action={deleteProblem}>
+                            <input type="hidden" name="id" value={problem.id} />
+                            <button type="submit" className="text-[#555555] hover:text-white transition-colors" title="Delete problem">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                              </svg>
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="w-40">
+                          <TopicSelect problemId={problem.id} initialTopic={problem.topic} />
+                        </div>
+                        <div className="text-right">
+                          {isDue ? (
+                            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#111111] px-2.5 py-0.5 text-xs font-medium text-white border border-white">
+                              <span className="h-1.5 w-1.5 rounded-full bg-white"></span>
+                              Due
+                            </span>
+                          ) : (
+                            <span className="text-[#a0a0a0] text-xs">
+                              {nextReview?.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* Desktop Table View */}
+              <table className="hidden md:table min-w-full text-left text-sm whitespace-nowrap">
                 <thead className="bg-[#111111] uppercase tracking-wider text-[#a0a0a0] text-xs border-b border-[#2a2a2a]">
                   <tr>
                     <th scope="col" className="px-6 py-4 font-medium">Problem</th>
