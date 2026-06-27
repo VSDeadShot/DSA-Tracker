@@ -45,12 +45,12 @@ export default async function ProblemPage({ params }: { params: { id: string } }
       </div>
 
       <div className="bg-[#1a1a1a] backdrop-blur-md p-8 rounded-2xl shadow-xl border border-[#2a2a2a]">
-        <div className="flex items-start justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 sm:gap-0">
           <div>
-            <h1 className="text-3xl font-bold text-white">
+            <h1 className="text-2xl md:text-3xl font-bold text-white break-words">
               {problem.title}
             </h1>
-            <div className="mt-3 flex gap-2">
+            <div className="mt-3 flex flex-wrap gap-2">
               <span className="inline-flex items-center rounded-md bg-[#2a2a2a] px-2.5 py-1 text-xs font-medium text-white border border-[#2a2a2a]">
                 {problem.platform}
               </span>
@@ -70,7 +70,7 @@ export default async function ProblemPage({ params }: { params: { id: string } }
             href={problem.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 transition-all hover:-translate-y-0.5"
+            className="flex items-center justify-center sm:justify-start gap-1.5 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 transition-all hover:-translate-y-0.5"
           >
             Solve Problem ↗
           </a>

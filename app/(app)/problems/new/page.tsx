@@ -4,11 +4,11 @@ import Link from 'next/link'
 export default function NewProblemPage() {
   return (
     <div className="p-4 md:p-8 max-w-3xl mx-auto">
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-white">Log a New Problem</h1>
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h1 className="text-2xl md:text-3xl font-bold text-white">Log a New Problem</h1>
         <Link
           href="/dashboard"
-          className="text-sm font-medium text-[#a0a0a0] hover:text-white transition-colors"
+          className="text-sm font-medium text-[#a0a0a0] hover:text-white transition-colors shrink-0"
         >
           &larr; Back to Dashboard
         </Link>
