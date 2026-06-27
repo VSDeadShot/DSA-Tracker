@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function NewProblemPage() {
   return (
-    <div className="p-8 max-w-3xl mx-auto">
+    <div className="p-4 md:p-8 max-w-3xl mx-auto">
       <div className="mb-8 flex items-center justify-between">
         <h1 className="text-3xl font-bold text-white">Log a New Problem</h1>
         <Link

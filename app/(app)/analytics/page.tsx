@@ -55,7 +55,7 @@ export default async function AnalyticsPage() {
     .sort((a, b) => a.avgConfidence - b.avgConfidence)
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8">
       <div className="mx-auto max-w-5xl">
         <div className="mb-8 flex items-center justify-between">
           <h1 className="text-3xl font-bold text-white">Analytics</h1>

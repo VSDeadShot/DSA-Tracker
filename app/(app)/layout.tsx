@@ -18,7 +18,7 @@ export default async function AppLayout({
   }
 
   return (
-    <div className="flex h-screen w-full bg-[#0a0a0a] text-white overflow-hidden">
+    <div className="flex flex-col md:flex-row h-screen w-full bg-[#0a0a0a] text-white overflow-hidden">
       <Sidebar userEmail={user.email} />
       <main className="flex-1 overflow-y-auto">
         {children}

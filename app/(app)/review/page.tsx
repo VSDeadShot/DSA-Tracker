@@ -33,7 +33,7 @@ export default async function ReviewQueuePage() {
   })
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 flex items-center justify-between">
           <div>
@@ -73,19 +73,19 @@ export default async function ReviewQueuePage() {
             <ul className="divide-y divide-[#2a2a2a]">
               {dueProblems.map((problem) => (
                 <li key={problem.id}>
-                  <Link href={`/problems/${problem.id}`} className="block hover:bg-[#111111] p-6 transition-colors group">
-                    <div className="flex items-center justify-between">
+                  <Link href={`/problems/${problem.id}`} className="block hover:bg-[#111111] p-4 md:p-6 transition-colors group">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0">
                       <div>
-                        <p className="text-lg font-medium text-white group-hover:underline">{problem.title}</p>
-                        <div className="mt-1 flex gap-2 text-xs">
+                        <p className="text-lg font-medium text-white group-hover:underline break-words">{problem.title}</p>
+                        <div className="mt-2 sm:mt-1 flex flex-wrap gap-2 text-xs">
                           <span className="text-[#a0a0a0]">{problem.platform}</span>
-                          <span className="text-[#555555]">&bull;</span>
+                          <span className="text-[#555555] hidden sm:inline">&bull;</span>
                           <span className="text-[#a0a0a0]">{problem.difficulty}</span>
-                          <span className="text-[#555555]">&bull;</span>
+                          <span className="text-[#555555] hidden sm:inline">&bull;</span>
                           <span className="text-[#a0a0a0]">{problem.topic}</span>
                         </div>
                       </div>
-                      <div className="text-right">
+                      <div className="text-left sm:text-right mt-2 sm:mt-0">
                         <span className="inline-flex items-center rounded-md bg-white px-3 py-1 text-sm font-medium text-black transition-colors hover:bg-gray-200">
                           Review Now &rarr;
                         </span>

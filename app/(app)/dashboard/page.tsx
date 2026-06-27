@@ -43,9 +43,9 @@ export default async function DashboardPage() {
   }).length
 
   return (
-    <div className="p-8">
+    <div className="p-4 md:p-8">
       <div className="mx-auto max-w-5xl">
-        <h1 className="text-3xl font-bold text-white mb-8">Dashboard</h1>
+        <h1 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">Dashboard</h1>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-10">

@@ -34,7 +34,7 @@ export default async function ProblemPage({ params }: { params: { id: string } }
   const latestReview = problem.reviews[0]
   
   return (
-    <div className="p-8 max-w-4xl mx-auto">
+    <div className="p-4 md:p-8 max-w-4xl mx-auto">
       <div className="mb-6 flex items-center justify-between">
         <Link
           href="/dashboard"
