@@ -48,32 +48,34 @@ export default async function DashboardPage() {
         <h1 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">Dashboard</h1>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-10">
-          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:bg-[#222222] group">
-            <h3 className="text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Current Streak</h3>
-            <div className="mt-2 flex items-baseline gap-2">
-              <p className="text-3xl font-bold text-white">{currentStreak}</p>
-              <p className="text-sm font-medium text-[#555555]">days</p>
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 mb-10">
+          <div className="bg-[#1a1a1a] p-4 sm:p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:bg-[#222222] group flex flex-col justify-between">
+            <h3 className="text-xs sm:text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Current Streak</h3>
+            <div className="mt-2 flex items-baseline gap-1 sm:gap-2">
+              <p className="text-2xl sm:text-3xl font-bold text-white">{currentStreak}</p>
+              <p className="text-xs sm:text-sm font-medium text-[#555555]">days</p>
             </div>
           </div>
 
-          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:bg-[#222222] group">
-            <h3 className="text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Total Problems</h3>
-            <p className="mt-2 text-3xl font-bold text-white">{totalProblems}</p>
+          <div className="bg-[#1a1a1a] p-4 sm:p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:bg-[#222222] group flex flex-col justify-between">
+            <h3 className="text-xs sm:text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Total Problems</h3>
+            <p className="mt-2 text-2xl sm:text-3xl font-bold text-white">{totalProblems}</p>
           </div>
           
-          <div className="bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:bg-[#222222] group">
-            <h3 className="text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Reviews Completed</h3>
-            <p className="mt-2 text-3xl font-bold text-white">{totalReviews}</p>
+          <div className="bg-[#1a1a1a] p-4 sm:p-6 rounded-2xl shadow-xl border border-[#2a2a2a] transition-all hover:-translate-y-1 hover:bg-[#222222] group flex flex-col justify-between">
+            <h3 className="text-xs sm:text-sm font-medium text-[#a0a0a0] group-hover:text-white transition-colors">Reviews Completed</h3>
+            <p className="mt-2 text-2xl sm:text-3xl font-bold text-white">{totalReviews}</p>
           </div>
 
-          <div className={`p-6 rounded-2xl shadow-xl border transition-all hover:-translate-y-1 group ${dueTodayCount > 0 ? 'bg-[#1a1a1a] border-white hover:bg-[#222222]' : 'bg-[#1a1a1a] border-[#2a2a2a] hover:bg-[#222222]'}`}>
-            <h3 className={`text-sm font-medium transition-colors ${dueTodayCount > 0 ? 'text-white' : 'text-[#a0a0a0] group-hover:text-white'}`}>Due for Review</h3>
-            <p className="mt-2 text-3xl font-bold text-white">
-              {dueTodayCount}
-            </p>
+          <div className={`p-4 sm:p-6 rounded-2xl shadow-xl border transition-all hover:-translate-y-1 group flex flex-col justify-between ${dueTodayCount > 0 ? 'bg-[#1a1a1a] border-white hover:bg-[#222222]' : 'bg-[#1a1a1a] border-[#2a2a2a] hover:bg-[#222222]'}`}>
+            <div>
+              <h3 className={`text-xs sm:text-sm font-medium transition-colors ${dueTodayCount > 0 ? 'text-white' : 'text-[#a0a0a0] group-hover:text-white'}`}>Due for Review</h3>
+              <p className="mt-2 text-2xl sm:text-3xl font-bold text-white">
+                {dueTodayCount}
+              </p>
+            </div>
             {dueTodayCount > 0 && (
-              <Link href="/review" className="mt-4 inline-block text-sm font-semibold text-white underline hover:text-[#a0a0a0]">
+              <Link href="/review" className="mt-4 inline-block text-xs sm:text-sm font-semibold text-white underline hover:text-[#a0a0a0]">
                 Start Session &rarr;
               </Link>
             )}
