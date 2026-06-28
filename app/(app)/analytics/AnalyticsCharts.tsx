@@ -57,7 +57,21 @@ export default function AnalyticsCharts({
                     cx="50%"
                     cy="50%"
                     labelLine={false}
-                    label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
+                    label={(props) => {
+                      const { x, y, name, percent, cx } = props;
+                      return (
+                        <text 
+                          x={x} 
+                          y={y} 
+                          fill="#a0a0a0" 
+                          textAnchor={x > cx ? 'start' : 'end'} 
+                          dominantBaseline="central"
+                          className="hidden md:block text-xs font-medium"
+                        >
+                          {`${name} ${((percent || 0) * 100).toFixed(0)}%`}
+                        </text>
+                      );
+                    }}
                     outerRadius={90}
                     fill="#8884d8"
                     dataKey="value"
