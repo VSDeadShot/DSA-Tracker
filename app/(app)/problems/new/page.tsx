@@ -17,7 +17,8 @@ export default function NewProblemPage() {
     
     if (p === 'leetcode') return `https://leetcode.com/problems/${slug}/`
     if (p === 'hackerrank') return `https://www.hackerrank.com/challenges/${slug}/problem`
-    if (p === 'codechef') return `https://www.codechef.com/problems/${slug}`
+    // We cannot auto-generate CodeChef because they use random short-codes (e.g. FLOW001) instead of title slugs
+    if (p === 'codechef') return ''
     return ''
   }
 
