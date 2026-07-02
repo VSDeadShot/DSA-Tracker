@@ -13,6 +13,15 @@ export async function submitReview(problemId: string, confidence: number) {
     throw new Error('Unauthorized')
   }
 
+  // SECURITY: Verify the problem actually exists and belongs to the authenticated user
+  const problem = await prisma.problem.findUnique({
+    where: { id: problemId }
+  })
+
+  if (!problem || problem.user_id !== user.id) {
+    throw new Error('Unauthorized: You do not own this problem')
+  }
+
   // Get the most recent review for this problem to feed into SM-2
   const lastReview = await prisma.review.findFirst({
     where: {
