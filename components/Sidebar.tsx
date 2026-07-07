@@ -24,7 +24,16 @@ export default function Sidebar({ userEmail }: { userEmail: string | undefined }
   return (
     <>
       {/* Mobile Top Header */}
-      <div className="md:hidden flex items-center justify-between p-4 bg-[#111111] border-b border-[#2a2a2a] shrink-0">
+      <div className="md:hidden flex items-center gap-4 p-4 bg-[#111111] border-b border-[#2a2a2a] shrink-0">
+        <button 
+          onClick={() => setIsMobileOpen(true)}
+          className="p-2 -ml-2 text-[#a0a0a0] hover:text-white transition-colors"
+          aria-label="Open menu"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
         <div className="flex items-center gap-3">
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#1a1a1a] text-white">
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -33,15 +42,6 @@ export default function Sidebar({ userEmail }: { userEmail: string | undefined }
           </div>
           <span className="font-bold text-lg text-white tracking-tight">DSA Tracker</span>
         </div>
-        <button 
-          onClick={() => setIsMobileOpen(true)}
-          className="p-2 -mr-2 text-[#a0a0a0] hover:text-white transition-colors"
-          aria-label="Open menu"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
       </div>
 
       {/* Mobile Backdrop */}
