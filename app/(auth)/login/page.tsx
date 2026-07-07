@@ -1,5 +1,6 @@
 import { login, signup } from './actions'
 import Link from 'next/link'
+import PasswordInput from '@/components/PasswordInput'
 
 export default async function LoginPage({
   searchParams,
@@ -74,13 +75,12 @@ export default async function LoginPage({
                 </Link>
               )}
             </div>
-            <input
+            <PasswordInput
               id="password"
               name="password"
-              type="password"
               autoComplete="current-password"
               required
-              className="mt-1 block w-full rounded-lg border border-[#555555] bg-[#111111] px-3 py-2 text-white placeholder-[#555555] focus:border-white focus:outline-none focus:ring-1 focus:ring-white sm:text-sm transition-colors"
+              className="!mt-0" // We already have mt-1 in the component wrapper, we can pass !mt-0 or just let it be handled by component
               placeholder="••••••••"
             />
           </div>
