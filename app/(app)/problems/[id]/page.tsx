@@ -1,4 +1,4 @@
-import prisma from '@/lib/prisma'
+import { getOwnedProblem } from '@/lib/problems'
 import { createClient } from '@/utils/supabase/server'
 import { notFound, redirect } from 'next/navigation'
 import Link from 'next/link'
@@ -8,21 +8,15 @@ export default async function ProblemPage({ params }: { params: { id: string } }
   const { id } = await params
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  
+
   if (!user) {
     redirect('/login')
   }
 
-  const problem = await prisma.problem.findUnique({
-    where: {
-      id: id,
-      user_id: user.id,
-    },
-    include: {
-      reviews: {
-        orderBy: {
-          reviewed_at: 'desc',
-        },
+  const problem = await getOwnedProblem(id, user.id, {
+    reviews: {
+      orderBy: {
+        reviewed_at: 'desc',
       },
     },
   })

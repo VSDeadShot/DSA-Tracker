@@ -2,23 +2,22 @@
 
 import { createClient } from '@/utils/supabase/server'
 import prisma from '@/lib/prisma'
+import { getOwnedProblem } from '@/lib/problems'
 import { calculateSM2 } from '@/lib/sm2'
 import { revalidatePath } from 'next/cache'
 
 export async function submitReview(problemId: string, confidence: number) {
   const supabase = await createClient()
-  
+
   const { data: { user }, error: authError } = await supabase.auth.getUser()
   if (authError || !user) {
     throw new Error('Unauthorized')
   }
 
   // SECURITY: Verify the problem actually exists and belongs to the authenticated user
-  const problem = await prisma.problem.findUnique({
-    where: { id: problemId }
-  })
+  const problem = await getOwnedProblem(problemId, user.id)
 
-  if (!problem || problem.user_id !== user.id) {
+  if (!problem) {
     throw new Error('Unauthorized: You do not own this problem')
   }
 
